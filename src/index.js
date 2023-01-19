@@ -19,7 +19,7 @@ const App = () => {
         <Routes>
           <Route
             path='/posts'
-            element={<Posts token={token} />}
+            element={<Posts token={token} username={username}/>}
           />
           <Route
             path='/'
