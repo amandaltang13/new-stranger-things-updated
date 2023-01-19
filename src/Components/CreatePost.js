@@ -11,28 +11,11 @@ const CreatePost = ({token, mainPassword}) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log (mainPassword)
-            const resp = await fetch ('https://strangers-things.herokuapp.com/api/2209-FTB-MT-WEB-PT/posts',{
-                method: "POST", 
-                headers: {
-                    'Content-type': 'application/json'
-                },
-                body: JSON.stringify({
-                    user: {
-                        username: `${username}`,
-                        password: `${mainPassword}`,
-                        
-                    }
-                })
-            })
-            const dataApi = await resp.json()
-            
-        console.log (dataApi);
         const response = await fetch ('https://strangers-things.herokuapp.com/api/2209-FTB-MT-WEB-PT/posts', {
             method: "POST", 
             headers: {
                 'Content-type': 'Application/JSON',
-                'Authorization': `Bearer ${dataApi?.data?.token}`
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({
                 title: `${title}`,
@@ -76,3 +59,4 @@ const CreatePost = ({token, mainPassword}) => {
     }
 
     export default CreatePost
+

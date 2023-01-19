@@ -5,6 +5,7 @@ import Login from './Components/Login';
 import Register from './Components/Register';
 import Posts from './Components/Posts';
 import CreatePost from './Components/CreatePost';
+import Profile from './Components/Profile';
 
 
 
@@ -18,7 +19,7 @@ const App = () => {
         <Routes>
           <Route
             path='/posts'
-            element={<Posts />}
+            element={<Posts token={token} />}
           />
           <Route
             path='/'
@@ -36,6 +37,10 @@ const App = () => {
           <Route
           path='/CreatePost'
           element={<CreatePost  />}
+          />
+          <Route 
+          path='/profile'
+          element={<Profile />}
           />
         </Routes>
       </BrowserRouter>

@@ -3,7 +3,7 @@ import './style.css'
 import Header from './Header';
 import { Link } from 'react-router-dom'
 
-const Posts = () => {
+const Posts = ({token}) => {
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
@@ -14,6 +14,47 @@ const Posts = () => {
         }
         fetchPosts()
     }, [])
+
+    const handleDeletePost = (post) => {
+
+        fetch(`https://strangers-things.herokuapp.com/api/2209-FTB-MT-WEB-PT/posts/${post._id}`, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        }).then(response => response.json())
+            .then(result => {
+                console.log(result);
+                const fetchPosts = async () => {
+                    const resp = await fetch('https://strangers-things.herokuapp.com/api/2209-FTB-MT-WEB-PT/posts')
+                    const dataApi = await resp.json();
+                    setPosts(dataApi.data.posts);
+                }
+                fetchPosts()
+            })
+            .catch(console.error);
+    }
+
+    const handleSendMess = (post) => {
+        fetch(`https://strangers-things.herokuapp.com/api/2209-FTB-MT-WEB-PT/posts/${post._id}`, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        }).then(response => response.json())
+        .then(result => {
+            console.log(result);
+            const fetchPosts = async () => {
+                const resp = await fetch('https://strangers-things.herokuapp.com/api/2209-FTB-MT-WEB-PT/posts')
+                const dataApi = await resp.json();
+                setPosts(dataApi.data.posts);
+            }
+            fetchPosts()
+        })
+        .catch(console.error);
+    }
 
     return (<>
         <Header />
@@ -26,8 +67,8 @@ const Posts = () => {
                     <p><strong>Price: </strong>{post.price}</p>
                     <p><strong>Location: </strong>{post.location}</p>
                     <p><strong>Seller: </strong>{post.author.username}</p>
-                    <div className='sendMesForm'>
-                    </div>
+                    <button type='button' className='messageBtn red' onClick={() => handleDeletePost(post)}>DELETE</button>
+                    <button type='button' className='messageBtn red' onClick={() => handleSendMess(post)}>SEND MESSAGE</button>
                 </div>)
         }
     </>)
