@@ -1,33 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './style.css'
 import Header from './Header';
 
-const CreatePost = ({token, mainPassword}) => {
+const CreatePost = ({token}) => {
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
     const [price, setPrice] = useState("");
     const [location, setLocation] = useState("");
     const [deliver, setDeliver] = useState(false);
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        const response = await fetch ('https://strangers-things.herokuapp.com/api/2209-FTB-MT-WEB-PT/posts', {
-            method: "POST", 
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        fetch('https://strangers-things.herokuapp.com/api/2209-FTB-MT-WEB-PT/posts', {
+            method: "POST",
             headers: {
-                'Content-type': 'Application/JSON',
+                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({
-                title: `${title}`,
-                body: `${body}`, 
-                price: `${price}`,
-                location: `${location}`,
-                deliver: `${deliver}`
-
-            })});
-            const data = await response.json();
-            console.log ('data:', data); 
-        }
+                post: {
+                    title: `${title}`,
+                    description: `${body}`,
+                    price: `${price}`,
+                    location: `${location}`,
+                    willDeliver: `${deliver}`
+                }
+            })
+        }).then(response => response.json())
+            .then(result => {
+            })
+            .catch(console.error);
+    }
 
         const handleTitle = (event) => {
             console.log (title) 

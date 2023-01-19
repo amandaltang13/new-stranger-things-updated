@@ -23,7 +23,8 @@ const LogIn = ({ setToken, username, setUsername, token, setMainPassword }) => {
             const dataApi = await resp.json()
             console.log (dataApi)
             if (dataApi.success){
-                setToken(dataApi?.data?.token)
+                await setToken(dataApi?.data?.token)
+                console.log(token)
                 fetch('https://strangers-things.herokuapp.com/api/2209-FTB-MT-WEB-PT/users/me', {
                 headers: {
                     'Content-Type': 'application/json',
@@ -31,6 +32,7 @@ const LogIn = ({ setToken, username, setUsername, token, setMainPassword }) => {
                 },
             }).then(response => response.json())
                 .then(result => {
+                    console.log(result)
                 })
                 .catch(console.error);
         }

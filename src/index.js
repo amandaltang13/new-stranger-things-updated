@@ -23,11 +23,12 @@ const App = () => {
           />
           <Route
             path='/'
-            element={<Login />}
+            element={<Login setToken={setToken} setUsername={setUsername} username={username} token={token}
+            />}
           />
           <Route
             path='/login'
-            element={<Login setToken={setToken} setUsername={setUsername} username={username}
+            element={<Login setToken={setToken} setUsername={setUsername} username={username} token={token}
             />}
           />
           <Route
@@ -36,11 +37,11 @@ const App = () => {
           />
           <Route
           path='/CreatePost'
-          element={<CreatePost  />}
+          element={<CreatePost  token={token}/>}
           />
           <Route 
           path='/profile'
-          element={<Profile />}
+          element={<Profile token={token}/>}
           />
         </Routes>
       </BrowserRouter>

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 
 const Posts = ({token}) => {
     const [posts, setPosts] = useState([])
+    const [message, setMessage]= useState([])
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -35,23 +36,21 @@ const Posts = ({token}) => {
             })
             .catch(console.error);
     }
-
     const handleSendMess = (post) => {
-        fetch(`https://strangers-things.herokuapp.com/api/2209-FTB-MT-WEB-PT/posts/${post._id}`, {
-            method: "DELETE",
+        fetch(`https://strangers-things.herokuapp.com/api/2209-FTB-MT-WEB-PT/posts/${post._id}/messages`, {
+            method: "POST",
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
-            }
+            },
+            body: JSON.stringify({
+                message: {
+                    content: `${message}`
+                }
+            })
         }).then(response => response.json())
         .then(result => {
             console.log(result);
-            const fetchPosts = async () => {
-                const resp = await fetch('https://strangers-things.herokuapp.com/api/2209-FTB-MT-WEB-PT/posts')
-                const dataApi = await resp.json();
-                setPosts(dataApi.data.posts);
-            }
-            fetchPosts()
         })
         .catch(console.error);
     }
