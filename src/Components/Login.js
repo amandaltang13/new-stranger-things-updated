@@ -36,7 +36,7 @@ const LogIn = ({ setToken, username, setUsername, token, setMainPassword }) => {
         }
         
     }
-                // console.log (result)
+    fetchLogin()
             }
 
     const handleName = (event) => {
