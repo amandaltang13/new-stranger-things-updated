@@ -154,3 +154,9 @@
     font-size: 15px;
     background-color: rgb(255, 214, 221);
 }
+
+.createPostBtn{
+    font-size: 25px;
+    padding: 5px;
+    background-color: rgb(173, 247, 250);
+}

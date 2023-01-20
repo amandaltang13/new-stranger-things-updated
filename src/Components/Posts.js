@@ -89,7 +89,7 @@ const Posts = ({token, username}) => {
 
     return (<>
         <Header />
-        <button  > <Link to="/CreatePost">Create A New Post</Link></button>
+        <button className='createPostBtn'> <Link to="/CreatePost">Create A New Post</Link></button>
         {
             posts.map(post =>
                 <div className='post' key={post._id} >
