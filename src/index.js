@@ -12,6 +12,7 @@ import Profile from './Components/Profile';
 const App = () => {
   const [token, setToken] = useState('');
   const [username, setUsername] = useState('');
+  const [profileMessages, setProfileMessages] = useState([]);
 
   return (
     <>
@@ -28,7 +29,7 @@ const App = () => {
           />
           <Route
             path='/login'
-            element={<Login setToken={setToken} setUsername={setUsername} username={username} token={token}
+            element={<Login setToken={setToken} setUsername={setUsername} username={username} token={token} setProfileMessages={setProfileMessages}
             />}
           />
           <Route
@@ -41,7 +42,7 @@ const App = () => {
           />
           <Route 
           path='/profile'
-          element={<Profile token={token}/>}
+          element={<Profile token={token} profileMessages={profileMessages}/>}
           />
         </Routes>
       </BrowserRouter>

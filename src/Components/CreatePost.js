@@ -50,13 +50,13 @@ const CreatePost = ({token}) => {
         }
         return (<>
             <Header></Header>
-            <h1>Create Post</h1>
-            <form onSubmit= {handleSubmit}>
-                <input type="text" placeholder="title" value={title} onChange={handleTitle}></input>
-                <input type="text" placeholder="body" value={body} onChange={handleBody}></input>
-                <input type="number" placeholder="price" value={price} onChange={handlePrice}></input>
-                <input type="text" placeholder="location" value={location} onChange={handleLocation}></input>
-                <button type="submit">Create Now!</button>
+            <h1 className='createHeader'>Create Post</h1>
+            <form className='submitContainer'onSubmit= {handleSubmit}>
+                <input className='createTitle' type="text" placeholder="title" value={title} onChange={handleTitle}></input>
+                <input className='createBody' type="text" placeholder="body" value={body} onChange={handleBody}></input>
+                <input className='createPrice' type="number" placeholder="price" value={price} onChange={handlePrice}></input>
+                <input className='createLocation' type="text" placeholder="location" value={location} onChange={handleLocation}></input>
+                <button className='createBtn'type="submit">Create Now!</button>
             </form>
         </>)
     }

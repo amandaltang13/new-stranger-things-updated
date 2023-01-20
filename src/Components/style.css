@@ -76,3 +76,81 @@
     gap: 10px;
 
 }
+
+.messageContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-direction: row;
+    height: 50px;
+    /* width: 100px; */
+    margin: 20px;
+    padding: 40px;
+    background-color: rgb(245, 197, 197);
+}
+
+.username{
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.messageHeader{
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.createHeader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(243, 165, 178);
+    
+}
+
+.submitContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 25px;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.createTitle{
+    height: 30px;
+    width: 200px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.createBody{
+    height: 30px;
+    width: 200px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.createPrice{
+    height: 30px;
+    width: 200px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.createLocation{
+    height: 30px;
+    width: 200px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.createBtn{
+    height: 50px;
+    width: 100px;
+    font-size: 15px;
+    background-color: rgb(255, 214, 221);
+}

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Header from './Header';
 import { Link } from 'react-router-dom';
 
-const LogIn = ({ setToken, username, setUsername, token, setMainPassword }) => {
+const LogIn = ({ setToken, username, setUsername, token, setMainPassword, setProfileMessages }) => {
     const [password, setPassword] = useState('');
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -33,6 +33,7 @@ const LogIn = ({ setToken, username, setUsername, token, setMainPassword }) => {
             }).then(response => response.json())
                 .then(result => {
                     console.log(result)
+                    setProfileMessages(result.data.messages)
                 })
                 .catch(console.error);
         }
